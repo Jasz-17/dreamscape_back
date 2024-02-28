@@ -18,6 +18,10 @@ return new class extends Migration
             $table->text('reason');
             $table->binary('image');
             $table->timestamps();
+
+            $table->foreignId('user_id')->constrained(
+                table:'users',indexName:'destinations_user_id'
+            );
         });
 
     }
