@@ -24,5 +24,16 @@ class DestinationSeeder extends Seeder
 
         $destination->save();
 
+
+        $destination2 = new Destination();
+
+        $destination2->name = "Machu Picchu";
+        $destination2->location = "Perú";
+        $destination2->reason = "Siempre he soñado con explorar las ruínas del Machu Picchu y maravillarme con su belleza y misterio";
+        $destination2->image = "../../public/assets/img/machupicchu.jpg";
+        $destination2->user_id = "1";
+
+        $destination2->save();
+
     }
 }
