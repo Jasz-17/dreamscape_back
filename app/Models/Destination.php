@@ -19,7 +19,7 @@ class Destination extends Model
         'name',
         'location',
         'reason',
-        'image',
+       'image',
     ];
 
     /**
