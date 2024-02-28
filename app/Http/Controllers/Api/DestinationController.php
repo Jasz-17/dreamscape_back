@@ -13,8 +13,11 @@ class DestinationController extends Controller
      */
     public function index()
     {
-        $destinations = Destination ::all();
-        return response ()-> json($destinations, 200);
+        $destinations = Destination::all();
+        if(count($destinations) >= 1){
+            return response ()-> json($destinations, 200);
+        }
+        return response()->json(['msg'=>'No hay destinos']);
     }
 
     /**
