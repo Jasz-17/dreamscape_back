@@ -25,15 +25,15 @@ class DestinationSeeder extends Seeder
         $destination->save();
 
 
-        $destination2 = new Destination();
+        $destination1 = new Destination();
 
-        $destination2->name = "Machu Picchu";
-        $destination2->location = "Perú";
-        $destination2->reason = "Siempre he soñado con explorar las ruínas del Machu Picchu y maravillarme con su belleza y misterio";
-        $destination2->image = "../../public/assets/img/machupicchu.jpg";
-        $destination2->user_id = "1";
+        $destination1->name = "Machu Picchu";
+        $destination1->location = "Perú";
+        $destination1->reason = "Siempre he soñado con explorar las ruínas del Machu Picchu y maravillarme con su belleza y misterio";
+        $destination1->image = "../../public/assets/img/machupicchu.jpg";
+        $destination1->user_id = "1";
 
-        $destination2->save();
+        $destination1->save();
 
 
         $destination2 = new Destination();
@@ -47,59 +47,59 @@ class DestinationSeeder extends Seeder
         $destination2->save();
 
 
-        $destination2 = new Destination();
+        $destination3 = new Destination();
 
-        $destination2->name = "Tokio";
-        $destination2->location = "Japón";
-        $destination2->reason = "Me gustaría visitar Tokio para experimentar su fascinante fusión de tradición y modernidad, probar su deliciosa gastronomía y explorar sus animados barrios";
-        $destination2->image = "../../public/assets/img/japon.jpg";
-        $destination2->user_id = "3";
+        $destination3->name = "Tokio";
+        $destination3->location = "Japón";
+        $destination3->reason = "Me gustaría visitar Tokio para experimentar su fascinante fusión de tradición y modernidad, probar su deliciosa gastronomía y explorar sus animados barrios";
+        $destination3->image = "../../public/assets/img/japon.jpg";
+        $destination3->user_id = "2";
 
-        $destination2->save();
-
-
-        $destination2 = new Destination();
-
-        $destination2->name = "Santorini";
-        $destination2->location = "Isla griega";
-        $destination2->reason = "Sueño con visitar Santorini para perderme en sus pintoriscos pueblos blancos, disfrutar de las impresionantes vistas del mar Egeo y contemplar sus hermosas puestas de sol";
-        $destination2->image = "../../public/assets/img/santorini.jpg";
-        $destination2->user_id = "4";
-
-        $destination2->save();
+        $destination3->save();
 
 
-        $destination2 = new Destination();
+        $destination4 = new Destination();
 
-        $destination2->name = "Sydney";
-        $destination2->location = "Australia";
-        $destination2->reason = "Me encantaría visitar Sydney para explorar sus famosas playas, descrubrir su vibrante escena cultural y disfrutar de la belleza natural de la bahía de Sydney.";
-        $destination2->image = "../../public/assets/img/sidney.jpg";
-        $destination2->user_id = "5";
+        $destination4->name = "Santorini";
+        $destination4->location = "Isla griega";
+        $destination4->reason = "Sueño con visitar Santorini para perderme en sus pintoriscos pueblos blancos, disfrutar de las impresionantes vistas del mar Egeo y contemplar sus hermosas puestas de sol";
+        $destination4->image = "../../public/assets/img/santorini.jpg";
+        $destination4->user_id = "2";
 
-        $destination2->save();
-
-
-        $destination2 = new Destination();
-
-        $destination2->name = "Roma";
-        $destination2->location = "Italia";
-        $destination2->reason = "Quiero visitar Roma para sumergirme en su rica historia, explorar sus antiguos monumentos y disfrutar de la deliciosa comida italiana";
-        $destination2->image = "../../public/assets/img/roma.jpg";
-        $destination2->user_id = "6";
-
-        $destination2->save();
+        $destination4->save();
 
 
-        $destination2 = new Destination();
+        $destination5 = new Destination();
 
-        $destination2->name = "New York";
-        $destination2->location = "New York";
-        $destination2->reason = "Quiero visitar New York para experimentar su energía vibrante, explorar sus famosos lugares de interés y sumergirme en su diversidad cultural";
-        $destination2->image = "../../public/assets/img/new york.jpg";
-        $destination2->user_id = "7";
+        $destination5->name = "Sydney";
+        $destination5->location = "Australia";
+        $destination5->reason = "Me encantaría visitar Sydney para explorar sus famosas playas, descrubrir su vibrante escena cultural y disfrutar de la belleza natural de la bahía de Sydney.";
+        $destination5->image = "../../public/assets/img/sidney.jpg";
+        $destination5->user_id = "3";
 
-        $destination2->save();
+        $destination5->save();
+
+
+        $destination6 = new Destination();
+
+        $destination6->name = "Roma";
+        $destination6->location = "Italia";
+        $destination6->reason = "Quiero visitar Roma para sumergirme en su rica historia, explorar sus antiguos monumentos y disfrutar de la deliciosa comida italiana";
+        $destination6->image = "../../public/assets/img/roma.jpg";
+        $destination6->user_id = "3";
+
+        $destination6->save();
+
+
+        $destination7 = new Destination();
+
+        $destination7->name = "New York";
+        $destination7->location = "New York";
+        $destination7->reason = "Quiero visitar New York para experimentar su energía vibrante, explorar sus famosos lugares de interés y sumergirme en su diversidad cultural";
+        $destination7->image = "../../public/assets/img/new york.jpg";
+        $destination7->user_id = "3";
+
+        $destination7->save();
 
     }
 }
