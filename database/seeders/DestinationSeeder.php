@@ -61,7 +61,7 @@ class DestinationSeeder extends Seeder
         $destination4 = new Destination();
 
         $destination4->name = "Santorini";
-        $destination4->location = "Isla griega";
+        $destination4->location = "Grecia";
         $destination4->reason = "Sueño con visitar Santorini para perderme en sus pintoriscos pueblos blancos, disfrutar de las impresionantes vistas del mar Egeo y contemplar sus hermosas puestas de sol";
         $destination4->image = "../../public/assets/img/santorini.jpg";
         $destination4->user_id = "2";
@@ -94,9 +94,9 @@ class DestinationSeeder extends Seeder
         $destination7 = new Destination();
 
         $destination7->name = "New York";
-        $destination7->location = "New York";
+        $destination7->location = "Estados Unidos";
         $destination7->reason = "Quiero visitar New York para experimentar su energía vibrante, explorar sus famosos lugares de interés y sumergirme en su diversidad cultural";
-        $destination7->image = "../../public/assets/img/new york.jpg";
+        $destination7->image = "../../public/assets/img/new_york.jpg";
         $destination7->user_id = "3";
 
         $destination7->save();
