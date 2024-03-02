@@ -13,11 +13,20 @@ class DestinationController extends Controller
      */
     public function index()
     {
-        $destinations = Destination::all();
-        if(count($destinations) >= 1){
-            return response ()-> json($destinations, 200);
-        }
-        return response()->json(['msg'=>'No hay destinos']);
+        $destinations = Destination::paginate(8);
+        /* dd($destinations); */
+       /*  Convertir el paginador a un array */
+    $data = $destinations->toArray();
+    $formattedResponse = [
+        'current_page' => $data['current_page'],
+        'data' => $data['data'],
+    ];
+
+    if (count($destinations) >= 1) {
+        return response()->json($formattedResponse, 200);
+    }
+
+    return response()->json(['msg' => 'No hay destinos']);
     }
 
     /**
