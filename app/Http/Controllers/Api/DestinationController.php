@@ -57,4 +57,31 @@ class DestinationController extends Controller
     {
         //
     }
+
+
+    public function search(Request $request)
+{
+    $request->validate([
+        'search' => 'required|string',
+    ]);
+
+    $searchTerm = $request->input('search');
+
+    $destination = Destination::where('name', 'like', '%' . $searchTerm . '%')
+                    ->orWhere('location', 'like', '%' . $searchTerm . '%')
+                    ->get();
+
+                    if ($destination->isEmpty()) {
+                        return response()->json(['message' => 'No se encontraron resultados'], 404);
+                    }
+                
+                    return response()->json($destination);
 }
+
+
+
+
+}
+
+
+

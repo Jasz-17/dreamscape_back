@@ -23,3 +23,6 @@ Route::get('/',[DestinationController::class,'index']);
 
 
 Route::get('/destinations/{id}', [DestinationController::class, 'show']);
+
+
+Route::get('/search', [DestinationController::class, 'search']);
