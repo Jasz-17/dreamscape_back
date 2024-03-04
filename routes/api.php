@@ -19,6 +19,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+<<<<<<< HEAD
 Route::get('/',[DestinationController::class,'index']);
 
 
@@ -26,3 +27,6 @@ Route::get('/destinations/{id}', [DestinationController::class, 'show']);
 
 
 Route::get('/search', [DestinationController::class, 'search']);
+=======
+Route::get('/destinations',[DestinationController::class,'index']);
+>>>>>>> feature_pagination
