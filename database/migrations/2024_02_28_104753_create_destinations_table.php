@@ -17,11 +17,10 @@ return new class extends Migration
             $table->string('location');
             $table->text('reason');
             $table->string('image');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
 
-            $table->foreignId('user_id')->constrained(
-                table:'users',indexName:'destinations_user_id'
-            );
         });
 
     }
