@@ -18,7 +18,6 @@ class AuthController extends Controller
             'password' => 'required|min:6',
         ]);
     
-        try {
             $user = User::create([
                 'name' => $request->name,
                 'email' => $request->email,
@@ -30,12 +29,8 @@ class AuthController extends Controller
             $message = 'Tus datos se han registrado exitosamente!';
             
             return response()->json(['token' => $token, 'message' => $message], 200);
-        } catch (\Exception $e) {
-            return response()->json(['message' => 'No fue posible concluir tu registro. Por favor, inténtalo de nuevo.'], 400);
-        }
+
     }
-
-
 
 
     public function login(Request $request)
@@ -58,18 +53,13 @@ class AuthController extends Controller
     }
 
 
-
     public function logout(Request $request)
     {
-        if (Auth::check()) {
-            $user = Auth::user();
-            Auth::logout();
-            return response()->json(['message' => 'Has cerrado sesión correctamente'], 200);
-        } else {
-            return response()->json(['message' => 'No hay una sesión activa'], 401);
-        }
+        $request->user()->currentAccessToken()->delete();
+        return response()->json(['success' => true, 'msg' => 'Has cerrado sesión correctamente'], 200);
     }
-
 }
 
 
+
+   
