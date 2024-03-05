@@ -19,7 +19,7 @@ class DestinationSeeder extends Seeder
         $destination->name = "París";
         $destination->location = "Francia";
         $destination->reason = "Me encantaría visitar París para disfrutar de su hermosa arquitectura y su romántico ambiente";
-        $destination->image = "../../public/assets/img/paris.jpg";
+        $destination->image = "/assets/img/paris.jpg"; 
         $destination->user_id = "1";
 
         $destination->save();
@@ -30,7 +30,7 @@ class DestinationSeeder extends Seeder
         $destination1->name = "Machu Picchu";
         $destination1->location = "Perú";
         $destination1->reason = "Siempre he soñado con explorar las ruínas del Machu Picchu y maravillarme con su belleza y misterio";
-        $destination1->image = "../../public/assets/img/machupicchu.jpg";
+        $destination1->image = "/assets/img/machupicchu.jpg";
         $destination1->user_id = "1";
 
         $destination1->save();
@@ -41,7 +41,7 @@ class DestinationSeeder extends Seeder
         $destination2->name = "Islas Maldivas";
         $destination2->location = "Océano índico";
         $destination2->reason = "Me encantaría relajarme en las playas de arena blanca y bucear en las aguas cristalinas de las Islas Maldivas";
-        $destination2->image = "../../public/assets/img/maldivas.jpg";
+        $destination2->image = "/assets/img/maldivas.jpg";
         $destination2->user_id = "2";
 
         $destination2->save();
@@ -52,7 +52,7 @@ class DestinationSeeder extends Seeder
         $destination3->name = "Tokio";
         $destination3->location = "Japón";
         $destination3->reason = "Me gustaría visitar Tokio para experimentar su fascinante fusión de tradición y modernidad, probar su deliciosa gastronomía y explorar sus animados barrios";
-        $destination3->image = "../../public/assets/img/japon.jpg";
+        $destination3->image = "/assets/img/japon.jpg";
         $destination3->user_id = "2";
 
         $destination3->save();
@@ -63,7 +63,7 @@ class DestinationSeeder extends Seeder
         $destination4->name = "Santorini";
         $destination4->location = "Grecia";
         $destination4->reason = "Sueño con visitar Santorini para perderme en sus pintoriscos pueblos blancos, disfrutar de las impresionantes vistas del mar Egeo y contemplar sus hermosas puestas de sol";
-        $destination4->image = "../../public/assets/img/santorini.jpg";
+        $destination4->image = "/assets/img/santorini.jpg";
         $destination4->user_id = "2";
 
         $destination4->save();
@@ -74,7 +74,7 @@ class DestinationSeeder extends Seeder
         $destination5->name = "Sydney";
         $destination5->location = "Australia";
         $destination5->reason = "Me encantaría visitar Sydney para explorar sus famosas playas, descrubrir su vibrante escena cultural y disfrutar de la belleza natural de la bahía de Sydney.";
-        $destination5->image = "../../public/assets/img/sidney.jpg";
+        $destination5->image = "/assets/img/sidney.jpg";
         $destination5->user_id = "3";
 
         $destination5->save();
@@ -85,7 +85,7 @@ class DestinationSeeder extends Seeder
         $destination6->name = "Roma";
         $destination6->location = "Italia";
         $destination6->reason = "Quiero visitar Roma para sumergirme en su rica historia, explorar sus antiguos monumentos y disfrutar de la deliciosa comida italiana";
-        $destination6->image = "../../public/assets/img/roma.jpg";
+        $destination6->image = "/assets/img/roma.jpg";
         $destination6->user_id = "3";
 
         $destination6->save();
@@ -96,7 +96,7 @@ class DestinationSeeder extends Seeder
         $destination7->name = "New York";
         $destination7->location = "Estados Unidos";
         $destination7->reason = "Quiero visitar New York para experimentar su energía vibrante, explorar sus famosos lugares de interés y sumergirme en su diversidad cultural";
-        $destination7->image = "../../public/assets/img/new_york.jpg";
+        $destination7->image = "/assets/img/new_york.jpg";
         $destination7->user_id = "3";
 
         $destination7->save();

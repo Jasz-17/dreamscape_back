@@ -19,9 +19,9 @@ use App\Http\Controllers\Api\AuthController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
+Route::middleware(['cors'])->group(function () {
 Route::get('/',[DestinationController::class,'index']);
-
+});
 
 Route::get('/destinations/{id}', [DestinationController::class, 'show']);
 
