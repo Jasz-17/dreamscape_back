@@ -100,6 +100,5 @@ class DestinationSeeder extends Seeder
         $destination7->user_id = "3";
 
         $destination7->save();
-
     }
 }

@@ -15,8 +15,16 @@ class AuthController extends Controller
         $request->validate([
             'name' => 'required|string',
             'email' => 'required|email|unique:users',
-            'password' => 'required|min:6',
-        ]);
+            'password' => 'required|min:6', 
+        ],
+        [
+        'name.required' => 'Nombre requerido',
+        'email.required' => 'E-mail requerido',
+        'email.email' => 'El email no es válido.',
+        'email.unique' => 'Este email ya está registrado.',
+        'password.required' => 'Contraseña requerida',
+        'password.min' => 'La contraseña debe tener al menos 6 caracteres.',
+    ]);
     
             $user = User::create([
                 'name' => $request->name,
@@ -36,9 +44,14 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $request->validate([
-            'email' => 'required',
+            'email' => 'required|email',
             'password' => 'required',
-        ]);
+        ],
+        [
+        'email.required' => 'Debes escribir un e-mail',
+        'password.required' => 'Debes escribir una contraseña',
+        'email.email' => 'El email no es válido.',
+    ]);
 
         if (!Auth::attempt($request->only('email', 'password'))) {
             return response()->json(['message' => 'Nombre de usuario o contraseña incorrectos. Por favor, inténtalo de nuevo.'], 401);
