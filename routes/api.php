@@ -23,7 +23,6 @@ Route::middleware(['cors'])->group(function () {
 Route::get('/',[DestinationController::class,'index']);
 });
 
-<<<<<<< HEAD
 Route::get('/destinations/{id}', [DestinationController::class, 'show']);
 
 
@@ -36,6 +35,3 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('user/logout', [AuthController::class, 'logout']);
 });
-=======
-Route::get('/',[DestinationController::class,'index']);
->>>>>>> feature_pagination
