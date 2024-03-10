@@ -29,9 +29,30 @@ class DestinationController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        //
+{
+    $request->validate([
+        'name' => 'required',
+        'reason' => 'required',
+        'location' => 'required', 
+        'image' => 'required|url', 
+        'user_id' => 'required|exists:users,id', 
+    ]);
+
+    $destination = Destination::create([
+        'name' => $request->input('name'),
+        'location' => $request->input('location'),
+        'reason' => $request->input('reason'),
+        'image' => $request->input('image') ?? 'valor_por_defecto',
+        'user_id' => $request->input('user_id'),
+    ]);
+
+    if ($destination) {
+        return response()->json($destination, 201); 
     }
+
+    return response()->json(["message" => "Problemas de registro"], 500);
+}
+
 
     /**
      * Display the specified resource.

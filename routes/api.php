@@ -35,3 +35,5 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('user/logout', [AuthController::class, 'logout']);
 });
+
+Route::post('/destinations', [DestinationController::class, 'store']);
