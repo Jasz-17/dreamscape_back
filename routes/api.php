@@ -37,3 +37,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 });
 
 Route::post('/destinations', [DestinationController::class, 'store']);
+
+Route::put('/destinations/{id}', [DestinationController::class, 'update']);
+

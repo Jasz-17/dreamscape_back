@@ -73,8 +73,33 @@ class DestinationController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'reason' => 'required',
+            'location' => 'required', 
+            'image' => 'required|url', 
+            'user_id' => 'required|exists:users,id', 
+        ]);
+
+        $destination = Destination::findOrFail($id);
+
+        if (!$destination) {
+            return response()->json(["message" => "Destino no encontrado"],404);
+        }
+
+        $destination->name = $request->input('name');
+        $destination->location = $request->input('location');
+        $destination->reason = $request->input('reason');
+        $destination->image = $request->input('image') ?? 'valor_por_defecto';
+        $destination->user_id = $request->input('user_id');
+
+        $destination->save();
+
+        return response()->json($destination, 200);
+    
     }
+
+
 
     /**
      * Remove the specified resource from storage.
