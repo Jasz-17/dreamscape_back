@@ -104,10 +104,20 @@ class DestinationController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
-    {
-        //
-    }
+    
+        public function destroy(string $id)
+        {
+            $destination = Destination::find($id);
+        
+            if (!$destination) {
+                return response()->json(["message" => "Destino no encontrado"], 404);
+            }
+        
+            $destination->delete();
+        
+            return response()->json(["message" => "Destino eliminado exitosamente"], 200);
+        }
+        
 
 
     public function search(Request $request)
