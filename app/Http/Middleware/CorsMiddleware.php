@@ -15,11 +15,12 @@ class CorsMiddleware
      * @param  \Closure  $next
      * @return mixed
      */
-    
+
     public function handle($request, Closure $next)
     {
-        $allowedOrigins = ['http://localhost:3000'];
-        
+        // Allow requests from specific origins
+        $allowedOrigins = ['http://localhost:3000']; // Add your frontend URL here
+
         if (in_array($request->header('Origin'), $allowedOrigins)) {
             return $next($request)
                 ->header('Access-Control-Allow-Origin', 'http://localhost:3000') 
@@ -30,4 +31,3 @@ class CorsMiddleware
         return $next($request);
     }
 }
-
