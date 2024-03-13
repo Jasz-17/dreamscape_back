@@ -13,8 +13,20 @@ class DestinationController extends Controller
      */
     public function index()
     {
+        try {
+            $destinations = Destination::all();
+            if ($destinations->isEmpty()) {
+                return response()->json(['msg' => 'No hay destinos disponibles'], 404);
+            }
+            return response()->json($destinations, 200);
+        } catch(\Exception $e) {
+            return response()->json(['msg' => 'Error al recuperar destinos'], 500);
+        }
+    }
+
+    public function getByPage()
+    {
         $destinations = Destination::paginate(8);
-        /* dd($destinations); */
     
 
     if (count($destinations) >= 1) {
