@@ -23,7 +23,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::middleware(['cors'])->group(function () {
     Route::get('/', [DestinationController::class, 'index']);
     Route::get('/page', [DestinationController::class, 'getByPage']);
-    Route::post('/login', [AuthController::class, 'login'])->middleware('cors');
+    Route::post('/login', [AuthController::class, 'login']);
     Route::post('/register', [AuthController::class, 'register']);
 });
 

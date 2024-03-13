@@ -18,8 +18,7 @@ class CorsMiddleware
     
     public function handle($request, Closure $next)
     {
-        // Allow requests from specific origins
-        $allowedOrigins = ['http://localhost:3000']; // Add your frontend URL here
+        $allowedOrigins = ['http://localhost:3000'];
         
         if (in_array($request->header('Origin'), $allowedOrigins)) {
             return $next($request)
