@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 use App\Models\Destination;
 use Illuminate\Support\Facades\Storage;
 
+use App\Models\User;
+
+
+
 class DestinationController extends Controller
 {
     /**
@@ -42,32 +46,72 @@ class DestinationController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
-{
-    $request->validate([
-        'name' => 'required',
-        'reason' => 'required',
-        'location' => 'required', 
-        'image' => 'required|image', 
-        'user_id' => 'required|exists:users,id', 
-    ]);
 
-    $imagePath = $request->file('image')->store('public/images');
 
-    $destination = Destination::create([
-        'name' => $request->input('name'),
-        'location' => $request->input('location'),
-        'reason' => $request->input('reason'),
-        'image' => Storage::url($imagePath),
-        'user_id' => $request->input('user_id'),
-    ]);
+     public function store(Request $request)
+     {
+         $request->validate([
+            'name' => 'required',
+            'reason' => 'required',
+            'location' => 'required', 
+            'image' => 'required',
+         ]);
+         $user = User::user();
+ 
+         if ($user) {
+             $destination = new Destination();
+             $destination->name = $request->name;
+             $destination->location = $request->location;
+ 
+             $destination->description = $request->description;
+ 
+  
+            if ($request->hasFile('image')) {
+                $imagePath = $request->file('image')->store('public/images');
+                $destination->image_path = str_replace('public/', 'storage/', $imagePath);
+            
+             $user->destinations()->save($destination);
+ 
+             return response()->json(['message' => 'Viaje se ha creado correctamente'], 201);
+         } else {
+             return response()->json(['message' => 'No autorizado'], 401);
+         }
+     }
 
-    if ($destination) {
-        return response()->json(["message" => "Destino creado exitosamente"], 201);
-    } else {
-        return response()->json(["message" => "Error al crear el destino"], 500);
     }
-}
+
+//     public function store(Request $request)
+// {
+//     $request->validate([
+//         'name' => 'required',
+//         'reason' => 'required',
+//         'location' => 'required', 
+//         'image' => 'required',
+//         'user_id' => 'required|integer', // Validar user_id 
+//     ]);
+
+
+//     // $user_id = $request->input('user_id');
+//     // $user_id = Auth::id();
+
+//     // $imagePath = $request->file('image')->store('public/images');
+
+//     $destination = Destination::create([
+//         'name' => $request->input('name'),
+//         'location' => $request->input('location'),
+//         'reason' => $request->input('reason'),
+//         'reason' => $request->input('image'),
+//         // 'image' => Storage::url($imagePath),
+//         // 'user_id' => $user_id,
+//         'user_id' => $request->input('user_id'),
+//     ]);
+
+//     if ($destination) {
+//         return response()->json(["message" => "Destino creado exitosamente"], 201);
+//     } else {
+//         return response()->json(["message" => "Error al crear el destino"], 500);
+//     }
+// }
 
 
 
