@@ -20,20 +20,20 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::middleware(['cors'])->group(function () {
+ 
     Route::get('/', [DestinationController::class, 'index']);
     Route::get('/page', [DestinationController::class, 'getByPage']);
     Route::post('/login', [AuthController::class, 'login']);
     Route::post('/register', [AuthController::class, 'register']);
-});
+
 
 Route::get('/destinations/{id}', [DestinationController::class, 'show']);
 Route::get('/search', [DestinationController::class, 'search']);
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
-    Route::post('user/logout', [AuthController::class, 'logout']);
-});
-
-Route::post('/destinations', [DestinationController::class, 'store']);
+    Route::post('/logout', [AuthController::class, 'logout']);
+    Route::post('/destinations', [DestinationController::class, 'store']);
 Route::put('/destinations/{id}', [DestinationController::class, 'update']);
 Route::delete('/destinations/{id}', [DestinationController::class, 'destroy']);
+});
+

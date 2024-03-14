@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Destination;
+use Illuminate\Support\Facades\Storage;
 
 class DestinationController extends Controller
 {
@@ -47,15 +48,17 @@ class DestinationController extends Controller
         'name' => 'required',
         'reason' => 'required',
         'location' => 'required', 
-        'image' => 'required|url', 
+        'image' => 'required|image', 
         'user_id' => 'required|exists:users,id', 
     ]);
+
+    $imagePath = $request->file('image')->store('public/images');
 
     $destination = Destination::create([
         'name' => $request->input('name'),
         'location' => $request->input('location'),
         'reason' => $request->input('reason'),
-        'image' => $request->input('image') ?? 'valor_por_defecto',
+        'image' => Storage::url($imagePath),
         'user_id' => $request->input('user_id'),
     ]);
 
