@@ -63,11 +63,12 @@ class DestinationController extends Controller
     ]);
 
     if ($destination) {
-        return response()->json($destination, 201); 
+        return response()->json(["message" => "Destino creado exitosamente"], 201);
+    } else {
+        return response()->json(["message" => "Error al crear el destino"], 500);
     }
-
-    return response()->json(["message" => "Problemas de registro"], 500);
 }
+
 
 
     /**
@@ -152,10 +153,6 @@ class DestinationController extends Controller
                 
                     return response()->json($destination);
 }
-
-
-
-
 }
 
 
