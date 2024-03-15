@@ -1,66 +1,83 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# DREAMSCAPE TRAVEL  
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Alongside [this front-end repository](https://github.com/vicki-robertson/dreamscape-front), this fullstack project involves the creation of a responsive website that allows users to post, edit, and delete their dream holiday destinations as well as view the holiday plans of other users.
 
-## About Laravel
+![home page](public/img/main-image.png)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Table of Contents
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- [Images](#images)
+- [Description](#description)
+- [Technologies](#technologies)
+- [Database Diagram](#databasediagram)
+- [Testing](#testing)
+- [Installation](#installation)
+- [Contributors](#contributors)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Images
 
-## Learning Laravel
+![sign-up form](public/img/sign-up.png)
+![log-in form](public/img/log-in.png)
+![destination not found message](public/img/not-found.png)
+![search function working](public/img/search.png)
+![destination page](public/img/destination-page.png)
+![modal after log-in](public/img/modal.png)
+![modal after registration](public/img/modal-mobile.png)
+![create destination form](public/img/create-dest.png)
+![logged-in page](public/img/logged-in.png)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Description
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+This project involved the creation of multiple-page responsive website, using React, Next.js, PHP, and Laravel. The site design, as specified by the fictional client 'Happy Travel' via a detailed [Figma mock-up](https://www.figma.com/file/twPJOzEo5hZJZ7srsEt10y/HappyTravel?type=design&node-id=4-1343&mode=design&t=Ws3hTyk3DDJ71bok-0), features various unique elements and pages. These include a search bar for finding holiday destinations with ease, a registration form for new users, and a login form for existing users. The site itself features a gallery of personalized holiday destinations that registered users are able to add to, edit, and delete, and users without an account are able to view and search. 
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
+## Technologies 
+This project used the following technologies and their specific versions:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+- React - 18
+- Next.js - 14.1.0
+- Tailwind CSS - 3.3.0
+- Node.js - 20.9.0
+- Vitest - 1.3.1
+- Cypress - 13.6.6
+- Axios - 1.6.7
+- Class Variance Authority (cva) - 0.7.0 
+- React Spinners - 0.13.8
+-----
+- PHP - 8.1
+- Laravel - 10.10
+- MySQL - 8.0
+- Xampp - 3.3.0
+- Sanctum - 3.3
+- PHPUnit - 10.1
+- Composer - 2.6.6
 
-### Premium Partners
+## Database Diagram
+This data base diagram shows that there is a one to many relationship as single users can create an unlimited number of destinations. The primary keys of both the users table and destinations table are their ids while the foreign key "user_id" on destinations is what connects the two tables, ensuring that the user's id is attached to the destination when created, identifying them as the only ones able to edit or delete the destination. 
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
 
-## Contributing
+![Database diagram](/public/img/database.png)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-## Code of Conduct
+## Testing
+In the front-end, this project used Vitest for unit testing and Cypress for end-to-end testing. Combined, these tests verified that the various pages and their components were being rendered properly while also ensuring a smooth user experience by simulating actions such as logging in and searching destinations. 
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+In the back-end, this project used PHPUnit to test user routes and endpoint access when authorized or not.
 
-## Security Vulnerabilities
+## Installation
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+- Clone both this back-end repository and [this front-end repository](https://github.com/vicki-robertson/dreamscape-front) in separate folders on your device
+- In the front-end terminal, the command 'npm install' will install all the necessary technologies used 
+- After creating a database called 'dreamscape' in MySQL, run the command 'php artisan migrate:fresh --seed' in the back-end terminal to populate your database with a selection of user and destination seeders   
+- To view the page, ensure that MySQL is running, enter 'npm run dev' in the front-end terminal and 'php artisan serve' in the back-end terminal
 
-## License
+## Contributors
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+[Débora Menezes, Fullstack Developer](https://github.com/debora-smb) <br>
+[Jéssica Solózano, Fullstack Developer](https://github.com/jazs-17) <br>
+[Vicki Robertson, Fullstack Developer](https://github.com/vicki-robertson) <br>
+[Laura Artaza, Fullstack Developer](https://github.com/lolamindi) <br>
+
+---
+
+Back to: [Table of Contents](#table-of-contents)
