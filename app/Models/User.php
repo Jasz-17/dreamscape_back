@@ -48,7 +48,8 @@ class User extends Authenticatable
     // {
     //     return $this->hasMany(Destination::class, 'id_user');
     // }
-    public function destinations(){
+    public function destinations(): HasMany
+    {
         return $this->hasMany(Destination::class);
     }
 }

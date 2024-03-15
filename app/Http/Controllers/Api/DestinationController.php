@@ -6,10 +6,9 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Destination;
 use Illuminate\Support\Facades\Storage;
-
+use Illuminate\Support\Facades\Auth; 
 use App\Models\User;
-
-
+use Illuminate\Support\Facades\Validator;
 
 class DestinationController extends Controller
 {
@@ -50,27 +49,38 @@ class DestinationController extends Controller
 
      public function store(Request $request)
      {
-         $request->validate([
-            'name' => 'required',
-            'reason' => 'required',
-            'location' => 'required', 
-            'image' => 'required',
-         ]);
-         $user = User::user();
- 
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string|max:255',
+            'location' => 'required|string|max:255',
+            'description' => 'required|string|max:255',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'error' => 'Faltan campos requeridos',
+                'message' => $validator->errors()->first()
+            ], 422);
+        }
+         $user = Auth::user();
+         if (!$user) {
+            return response()->json(['error' => 'Usuario no autenticado'], 401);
+        }
+        
          if ($user) {
              $destination = new Destination();
              $destination->name = $request->name;
              $destination->location = $request->location;
- 
              $destination->description = $request->description;
  
-  
+             
+
             if ($request->hasFile('image')) {
                 $imagePath = $request->file('image')->store('public/images');
                 $destination->image_path = str_replace('public/', 'storage/', $imagePath);
             
-             $user->destinations()->save($destination);
+                $destination->save();
+                $destination->user()->associate($user); 
  
              return response()->json(['message' => 'Viaje se ha creado correctamente'], 201);
          } else {
@@ -197,6 +207,25 @@ class DestinationController extends Controller
                 
                     return response()->json($destination);
 }
+
+// public function getUserDestinations($userId)
+//     {
+//         // Encuentra al usuario por su ID
+//         $user = User::find($userId);
+
+//         if (!$user) {
+//             return response()->json(['message' => 'Usuario no encontrado'], 404);
+//         }
+
+//         // Obtén los destinos del usuario
+//         $destinations = $user->destinations;
+
+//         return response()->json($destinations);
+//     }
+
+
+
+
 }
 
 

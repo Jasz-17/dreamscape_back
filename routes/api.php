@@ -20,7 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
- 
+/* Route::middleware('auth:sanctum')->post('/destinations', [DestinationController::class, 'store']); */
     Route::get('/', [DestinationController::class, 'index']);
     Route::get('/page', [DestinationController::class, 'getByPage']);
     Route::post('/login', [AuthController::class, 'login']);
