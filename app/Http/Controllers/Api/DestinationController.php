@@ -47,8 +47,8 @@ class DestinationController extends Controller
      */
 
 
-     public function store(Request $request)
-     {
+    public function store(Request $request)
+    {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
             'location' => 'required|string|max:255',
@@ -62,67 +62,32 @@ class DestinationController extends Controller
                 'message' => $validator->errors()->first()
             ], 422);
         }
-         $user = Auth::user();
-         if (!$user) {
+        $user = Auth::user();
+        if (!$user) {
             return response()->json(['error' => 'Usuario no autenticado'], 401);
         }
-        
-         if ($user) {
-             $destination = new Destination();
-             $destination->name = $request->name;
-             $destination->location = $request->location;
-             $destination->description = $request->description;
- 
-             
+
+        if ($user) {
+            $destination = new Destination();
+            $destination->name = $request->name;
+            $destination->location = $request->location;
+            $destination->description = $request->description;
+
+
 
             if ($request->hasFile('image')) {
                 $imagePath = $request->file('image')->store('public/images');
                 $destination->image_path = str_replace('public/', 'storage/', $imagePath);
-            
+
                 $destination->save();
-                $destination->user()->associate($user); 
- 
-             return response()->json(['message' => 'Viaje se ha creado correctamente'], 201);
-         } else {
-             return response()->json(['message' => 'No autorizado'], 401);
-         }
-     }
+                $destination->user()->associate($user);
 
+                return response()->json(['message' => 'Viaje se ha creado correctamente'], 201);
+            } else {
+                return response()->json(['message' => 'No autorizado'], 401);
+            }
+        }
     }
-
-//     public function store(Request $request)
-// {
-//     $request->validate([
-//         'name' => 'required',
-//         'reason' => 'required',
-//         'location' => 'required', 
-//         'image' => 'required',
-//         'user_id' => 'required|integer', // Validar user_id 
-//     ]);
-
-
-//     // $user_id = $request->input('user_id');
-//     // $user_id = Auth::id();
-
-//     // $imagePath = $request->file('image')->store('public/images');
-
-//     $destination = Destination::create([
-//         'name' => $request->input('name'),
-//         'location' => $request->input('location'),
-//         'reason' => $request->input('reason'),
-//         'reason' => $request->input('image'),
-//         // 'image' => Storage::url($imagePath),
-//         // 'user_id' => $user_id,
-//         'user_id' => $request->input('user_id'),
-//     ]);
-
-//     if ($destination) {
-//         return response()->json(["message" => "Destino creado exitosamente"], 201);
-//     } else {
-//         return response()->json(["message" => "Error al crear el destino"], 500);
-//     }
-// }
-
 
 
     /**
@@ -207,23 +172,6 @@ class DestinationController extends Controller
                 
                     return response()->json($destination);
 }
-
-// public function getUserDestinations($userId)
-//     {
-//         // Encuentra al usuario por su ID
-//         $user = User::find($userId);
-
-//         if (!$user) {
-//             return response()->json(['message' => 'Usuario no encontrado'], 404);
-//         }
-
-//         // Obtén los destinos del usuario
-//         $destinations = $user->destinations;
-
-//         return response()->json($destinations);
-//     }
-
-
 
 
 }
