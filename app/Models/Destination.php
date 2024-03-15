@@ -21,6 +21,7 @@ class Destination extends Model
         'location',
         'reason',
        'image',
+       'user_id',
     ];
 
     /**
