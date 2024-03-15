@@ -2,9 +2,7 @@
 
 namespace Tests\Feature\Api;
 
-use App\Models\Destination;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
 class DestinationControllerTest extends TestCase
